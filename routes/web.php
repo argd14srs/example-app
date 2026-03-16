@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TestController;   
 
 Route::get('/', function () {
     return view('welcome');
@@ -13,7 +14,12 @@ Route::get('about', function(){
 
 Route::get('/ideas',function(){
     $ideas = DB::table('ideas')->get();
-    // $ideas = Illuminate\Support\Facades\DB::table('ideas')->get();
-    // dd($ideas);
     return $ideas;
 });
+
+
+Route::resource('tests',
+TestController::class
+);
+
+?>
